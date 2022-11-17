@@ -17,7 +17,7 @@ namespace TheLegendOfHP
     /// <summary>
     /// Interaction logic for wndBattle.xaml
     /// </summary>
-    public partial class wndBattle : Window
+    public partial class wndBattle : Window 
     {
         Random random = new Random();
         Player hero;

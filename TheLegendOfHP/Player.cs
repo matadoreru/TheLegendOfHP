@@ -18,9 +18,5 @@ namespace TheLegendOfHP
             healthPoints = MaxHealthPoints;
             isAlive = true;
         }
-
-
-
-
     }
 }

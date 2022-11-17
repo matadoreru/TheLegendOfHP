@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TheLegendOfHP"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
         mc:Ignorable="d"
         Title="wndBattle" Height="450" Width="800"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -14,11 +15,8 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}">
-    
-    <Window.DataContext>
-        <local:wndBattle/>
-    </Window.DataContext>
-    
+
+
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/Source/backgroundBattle.jpg"/>
@@ -49,7 +47,7 @@
                        VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
             <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding ElementName=enemyHP, Path=Maximum, StringFormat=' {0}'}" FontSize="25" FontWeight="Bold"
                        VerticalAlignment="Bottom"/>
-            <ProgressBar x:Name="enemyHP" Grid.ColumnSpan="2" Grid.Row="2" Maximum="{Binding Slime.MaxHealthPoints}" Value="{Binding Slime.HealthPoints}"
+            <ProgressBar x:Name="enemyHP" Grid.ColumnSpan="2" Grid.Row="2" Maximum="100" Value="100"
                      Height="30" Margin="0,0,0,20" VerticalAlignment="Bottom"/>
         </Grid>
         <Grid Grid.Column="0" Grid.Row="2">
@@ -66,7 +64,7 @@
                        VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
             <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding ElementName=playerHP, Path=Maximum, StringFormat=' {0}'}" FontSize="25" FontWeight="Bold"
                        VerticalAlignment="Bottom"/>
-            <ProgressBar x:Name="playerHP" Grid.ColumnSpan="2" Grid.Row="2" Maximum="{Binding Hero.MaxHealthPoints}" Value="{Binding Hero.HealthPoints}"
+            <ProgressBar x:Name="playerHP" Grid.ColumnSpan="2" Grid.Row="2" Maximum="100" Value="100"
                      Height="30" Margin="10,0,0,20" VerticalAlignment="Bottom"/>
         </Grid>
 
