@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 
 namespace TheLegendOfHP
 {
+    
     public abstract class Entity
     {
-        protected int maxHealthPoints, atack, defence, velocity, level, healthPoints;
+        protected int maxHealthPoints, atack, defence, velocity, level, healthPoints, probAtack;
         protected bool isAlive;
+        private Random r = new Random();
 
 
         public Entity(int lvl)
@@ -41,7 +43,16 @@ namespace TheLegendOfHP
         }
         public int Velocity { get{ return velocity; } set { velocity = value; } }
         public bool IsAlive => healthPoints > 0;
-        public int Dmg => atack + (Level / 2);
+        public int Dmg {
+            set {
+                probAtack = r.Next(1,21);
+                if(probAtack == 1) return 0;
+                else if (probAtack == 20) return atack * 2;
+                else return atack;
+            }
+        
+        
+        }
         public int substracHealth(int dmg)
 
         {
