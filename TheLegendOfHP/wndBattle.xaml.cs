@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,12 +17,11 @@ namespace TheLegendOfHP
     /// <summary>
     /// Interaction logic for wndBattle.xaml
     /// </summary>
-    public partial class wndBattle : Window
+    public partial class wndBattle : Window 
     {
         Random random = new Random();
         Player hero;
         Enemy slime;
-
         Random r = new Random();
         public wndBattle()
         {
@@ -30,6 +29,9 @@ namespace TheLegendOfHP
             hero = new Player(5);
             slime = new Enemy(r.Next(1, hero.Level-1));
         }
+
+        public Player Hero { get => hero; set => hero = value; }
+        public Enemy Slime { get => slime; set => slime = value; }
 
         private void btnAttack_Click(object sender, RoutedEventArgs e)
         {
