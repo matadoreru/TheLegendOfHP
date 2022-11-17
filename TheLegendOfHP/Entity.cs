@@ -44,11 +44,14 @@ namespace TheLegendOfHP
         public int Velocity { get{ return velocity; } set { velocity = value; } }
         public bool IsAlive => healthPoints > 0;
         public int Dmg {
-            set {
+            get {
                 probAtack = r.Next(1,21);
-                if(probAtack == 1) return 0;
-                else if (probAtack == 20) return atack * 2;
-                else return atack;
+                if(probAtack == 1) 
+                    return 0;
+                else if (probAtack == 20) 
+                    return Atack * 2;
+                else 
+                    return Atack;
             }
         
         
