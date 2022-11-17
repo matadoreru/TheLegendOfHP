@@ -8,7 +8,6 @@ namespace TheLegendOfHP
 {
     public class Enemy : Entity
     {
-
         public Enemy(int lvl) : base(lvl)
         {
             level = lvl;
@@ -19,5 +18,7 @@ namespace TheLegendOfHP
             healthPoints = MaxHealthPoints;
             isAlive = true;
         }
+
+
     }
 }
