@@ -48,20 +48,19 @@ namespace TheLegendOfHP
             }
         }
         public int Velocity { get{ return velocity; } set { velocity = value; } }
-        public bool IsAlive { get{ return isAlive; } set { isAlive = value; } }
+        public bool IsAlive => healthPoints > 0;
         public int Dmg => atack * (Level / 2);
+        public int substracHealth(int dmg)
 
-        public event PropertyChangedEventHandler? PropertyChanged;
-       
-        private void OnCanviDinsDeLaPropietat([System.Runtime.CompilerServices.CallerMemberName] string nomDeLaPropietat = "")
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nomDeLaPropietat));
-        }
+            int damageDealt = 0;
+            if(defence < dmg)
+            {
+                damageDealt = dmg - defence;
+                HealthPoints = healthPoints - damageDealt;
 
-        public void substracHealth(int dmg)
-        {
-            HealthPoints = healthPoints - (dmg - defence);
-            if (HealthPoints <= 0) IsAlive = false;
+            }
+            return damageDealt;
         }
 
 

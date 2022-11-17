@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,11 +22,12 @@ namespace TheLegendOfHP
         Random random = new Random();
         Player hero;
         Enemy slime;
+        Random r = new Random();
         public wndBattle()
         {
             InitializeComponent();
-            Hero = new Player(5);
-            slime = new Enemy(Hero.Level - 2);
+            hero = new Player(5);
+            slime = new Enemy(r.Next(1, hero.Level-1));
         }
 
         public Player Hero { get => hero; set => hero = value; }
@@ -34,6 +35,37 @@ namespace TheLegendOfHP
 
         private void btnAttack_Click(object sender, RoutedEventArgs e)
         {
+
+            if(slime.Velocity > hero.Velocity) {
+                //You scratch the enemy, you make a total of 50 damage
+                tbLog.Text = "The enemy has tackled, he made you a total of " + hero.substracHealth(slime.Dmg) + "damage";
+                if (!hero.IsAlive) PartidaPerduda();
+                tbLog.Text = "You scratch the enemy, you make a total of " + slime.substracHealth(hero.Dmg) + "damage";
+                if (!slime.IsAlive) PartidaGuanyada();
+            }
+            else
+            {
+                tbLog.Text = "You scratch the enemy, you make a total of " + slime.substracHealth(hero.Dmg) + "damage";
+                if (!slime.IsAlive) PartidaGuanyada();
+                tbLog.Text = "The enemy has tackled, he made you a total of " + hero.substracHealth(slime.Dmg) + "damage";
+                if (!hero.IsAlive) PartidaPerduda();
+                
+            }
+        }
+
+
+
+        public void PartidaGuanyada()
+        {
+            MessageBox.Show("You killed the enemy", "Announcement", MessageBoxButton.OK);
+            this.Close();
+
+        }
+
+        public void PartidaPerduda()
+        {
+            MessageBox.Show("You have been killed by the enemy", "Announcement", MessageBoxButton.OK);
+            this.Close();
 
         }
 
