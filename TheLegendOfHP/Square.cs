@@ -6,15 +6,16 @@ using System.Threading.Tasks;
 
 namespace TheLegendOfHP
 {
+    public enum TilesTypes { Grass, DarkGrass, Mountains}
     public class Square
     {
-        private bool hostile;
+        private TilesTypes tileType;
 
-        public Square(bool hostile)
+        public Square(TilesTypes tileType)
         {
-            this.Hostile = hostile;
+            this.tileType = tileType;
         }
 
-        public bool Hostile { get => hostile; set => hostile = value; }
+        public TilesTypes TileType { get => tileType; set => tileType = value; }
     }
 }

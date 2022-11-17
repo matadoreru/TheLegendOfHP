@@ -47,7 +47,7 @@ namespace TheLegendOfHP
         private void WndMap_KeyDown(object sender, KeyEventArgs e)
         {
 
-            if (e.Key == Key.S && posXPlayer + 1 < myGrid.RowDefinitions.Count)
+            if (e.Key == Key.S && posXPlayer + 1 < myGrid.RowDefinitions.Count && map.MapTiles[posXPlayer + 1,posYPlayer].TileType != TilesTypes.Mountains)
             {
                 myGrid.Children.Remove(myGrid.Children[myGrid.Children.Count - 1]);
                 posXPlayer++;
@@ -55,7 +55,7 @@ namespace TheLegendOfHP
                 if(OccurBattle())
                     ThrowBattle();
             }
-            else if (e.Key == Key.W && posXPlayer - 1 >= 0)
+            else if (e.Key == Key.W && posXPlayer - 1 >= 0 && map.MapTiles[posXPlayer - 1, posYPlayer].TileType != TilesTypes.Mountains)
             {
                 myGrid.Children.Remove(myGrid.Children[myGrid.Children.Count - 1]);
                 posXPlayer--;
@@ -63,7 +63,7 @@ namespace TheLegendOfHP
                 if (OccurBattle())
                     ThrowBattle();
             }
-            else if (e.Key == Key.A && posYPlayer - 1 >= 0)
+            else if (e.Key == Key.A && posYPlayer - 1 >= 0 && map.MapTiles[posXPlayer, posYPlayer - 1].TileType != TilesTypes.Mountains)
             {
                 myGrid.Children.Remove(myGrid.Children[myGrid.Children.Count - 1]);
                 posYPlayer--;
@@ -71,7 +71,7 @@ namespace TheLegendOfHP
                 if (OccurBattle())
                     ThrowBattle();
             }
-            else if (e.Key == Key.D && posYPlayer + 1 < myGrid.ColumnDefinitions.Count)
+            else if (e.Key == Key.D && posYPlayer + 1 < myGrid.ColumnDefinitions.Count && map.MapTiles[posXPlayer, posYPlayer + 1].TileType != TilesTypes.Mountains)
             {
                 myGrid.Children.Remove(myGrid.Children[myGrid.Children.Count - 1]);
                 posYPlayer++;
@@ -90,7 +90,7 @@ namespace TheLegendOfHP
         private bool OccurBattle()
         {
             bool battle = false;
-            if(map.MapTiles[posXPlayer,posYPlayer].Hostile)
+            if(map.MapTiles[posXPlayer,posYPlayer].TileType == TilesTypes.DarkGrass)
             {
                 if (random.Next(0, 6) == 5)
                     battle = true;
@@ -135,10 +135,13 @@ namespace TheLegendOfHP
                     Image tile = new Image();
                     Grid.SetRow(tile, i);
                     Grid.SetColumn(tile, j);
-                    if (!map.MapTiles[i, j].Hostile)
+                    if (map.MapTiles[i, j].TileType == TilesTypes.Grass)
                         tile.Source = new BitmapImage(new Uri("/Source/grass.png", UriKind.Relative));
-                    else
+                    else if (map.MapTiles[i, j].TileType == TilesTypes.DarkGrass)
                         tile.Source = new BitmapImage(new Uri("/Source/grassHostile.png", UriKind.Relative));
+                    else
+                        tile.Source = new BitmapImage(new Uri("/Source/mountain.png", UriKind.Relative));
+
                     tile.Stretch = Stretch.Fill;
                     myGrid.Children.Add(tile);
                 }

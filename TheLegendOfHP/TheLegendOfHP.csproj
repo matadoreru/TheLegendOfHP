@@ -11,6 +11,7 @@
     <None Remove="Source\backgroundBattle.jpg" />
     <None Remove="Source\grass.png" />
     <None Remove="Source\grassHostile.png" />
+    <None Remove="Source\mountain.png" />
     <None Remove="Source\player.png" />
     <None Remove="Source\slime.png" />
   </ItemGroup>
@@ -23,6 +24,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Source\grassHostile.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Source\mountain.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Source\player.png">

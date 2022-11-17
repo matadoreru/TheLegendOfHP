@@ -59,6 +59,11 @@ namespace TheLegendOfHP
                         playerHP.Value = hero.HealthPoints;
                         playerHP.Maximum = hero.MaxHealthPoints;
                         PartidaGuanyada();
+                        hero.NEnemysDefeat++;
+                        if (hero.NEnemysDefeat == 5)
+                            MessageBox.Show("You have defeated the Demon King's minions.\n" +
+                                "You Win!\n" +
+                                "You can keep playing as long as you want!");
                     }
                     else
                     {
@@ -79,6 +84,11 @@ namespace TheLegendOfHP
                     playerHP.Value = hero.HealthPoints;
                     playerHP.Maximum = hero.MaxHealthPoints;
                     PartidaGuanyada();
+                    hero.NEnemysDefeat++;
+                    if (hero.NEnemysDefeat == 5)
+                        MessageBox.Show("You have defeated the Demon King's minions.\n" +
+                            "You Win!\n" +
+                            "You can keep playing as long as you want!");
                 }
                 else
                 {

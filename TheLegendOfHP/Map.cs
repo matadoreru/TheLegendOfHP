@@ -17,17 +17,19 @@ namespace TheLegendOfHP
         public Map()
         {
             int resultat;
-            bool hostile = false;
+            TilesTypes tileType = TilesTypes.Grass;
             for(int i = 0; i < DIMENSIONS_X; i++)
             {
                 for(int j = 0; j < DIMENSIONS_Y; j++)
                 {
-                    resultat = random.Next(0, 10);
-                    if(resultat >= 7)
-                        hostile = true;
-                    Square tempSquare = new Square(hostile);
+                    resultat = random.Next(0, 12);
+                    if(resultat >= 7 && resultat <= 10)
+                        tileType = TilesTypes.DarkGrass;
+                    else if(resultat == 11)
+                        tileType = TilesTypes.Mountains;
+                    Square tempSquare = new Square(tileType);
                     MapTiles[i, j] = tempSquare;
-                    hostile = false;
+                    tileType = TilesTypes.Grass;
                 }
             }
         }
