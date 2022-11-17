@@ -21,7 +21,6 @@ namespace TheLegendOfHP
             velocity = 5* level;
             healthPoints = MaxHealthPoints;
             isAlive = true;
-
         }
 
 

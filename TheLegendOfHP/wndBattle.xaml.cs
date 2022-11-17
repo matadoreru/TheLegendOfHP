@@ -20,10 +20,17 @@ namespace TheLegendOfHP
     public partial class wndBattle : Window
     {
         Random random = new Random();
+        Player hero;
+        Enemy slime;
         public wndBattle()
         {
             InitializeComponent();
+            Hero = new Player(5);
+            slime = new Enemy(Hero.Level - 2);
         }
+
+        public Player Hero { get => hero; set => hero = value; }
+        public Enemy Slime { get => slime; set => slime = value; }
 
         private void btnAttack_Click(object sender, RoutedEventArgs e)
         {
