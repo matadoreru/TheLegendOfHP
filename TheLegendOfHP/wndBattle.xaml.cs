@@ -25,7 +25,7 @@ namespace TheLegendOfHP
             InitializeComponent();
         }
 
-        private void btnAtack_Click(object sender, RoutedEventArgs e)
+        private void btnAttack_Click(object sender, RoutedEventArgs e)
         {
 
         }
