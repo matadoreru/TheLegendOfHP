@@ -10,30 +10,34 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace TheLegendOfHP
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for wndBattle.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class wndBattle : Window
     {
-        public MainWindow()
+        Random random = new Random();
+        public wndBattle()
         {
             InitializeComponent();
         }
 
-        private void btnPlay_Click(object sender, RoutedEventArgs e)
+        private void btnAttack_Click(object sender, RoutedEventArgs e)
         {
-            wndMap wndMap = new wndMap();
-            wndMap.ShowDialog();
+
         }
 
-        private void btnExit_Click(object sender, RoutedEventArgs e)
+        private void btnRun_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            int res = random.Next(0, 11);
+
+            if (res == 10)
+                tbLog.Text = "The enemy grabs you, you could'nt escape";
+            else
+                this.Close();
         }
     }
 }

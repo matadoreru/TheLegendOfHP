@@ -5,8 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TheLegendOfHP"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="The Legend of HP" Height="450" Width="800">
     <Grid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <!-- Imatge principal -->
+        <TextBlock Text="The Legend of HP" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Button x:Name="btnPlay" Grid.Row="1" Content="Play" Margin="5"
+                Click="btnPlay_Click" FontSize="25"/>
+        <Button x:Name="btnExit" Grid.Row="2" Content="Exit" Margin="5" 
+                Click="btnExit_Click" FontSize="25"/>
     </Grid>
 </Window>
