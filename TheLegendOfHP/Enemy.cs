@@ -11,13 +11,11 @@ namespace TheLegendOfHP
         public Enemy(int lvl) : base(lvl)
         {
             level = lvl;
-            maxHealthPoints = 9 * level;
-            atack = 5 * level;
-            defence = 3 * level;
-            velocity = 5 * level;
+            maxHealthPoints = 12 * level;
+            atack = 3 * level;
+            defence = 1 * level;
+            velocity = 1 * level;
             healthPoints = MaxHealthPoints;
         }
-
-
     }
 }

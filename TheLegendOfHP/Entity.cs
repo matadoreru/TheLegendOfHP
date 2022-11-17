@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TheLegendOfHP
 {
-    public abstract class Entity : INotifyPropertyChanged
+    public abstract class Entity
     {
         protected int maxHealthPoints, atack, defence, velocity, level, healthPoints;
         protected bool isAlive;
@@ -17,9 +17,9 @@ namespace TheLegendOfHP
         {
             level = lvl;
             maxHealthPoints = 15 * level;
-            atack = 5* level;
-            defence = 5* level;
-            velocity = 5* level;
+            atack = 1* level;
+            defence = 1* level;
+            velocity = 1* level;
             healthPoints = MaxHealthPoints;
             isAlive = true;
         }
@@ -30,26 +30,18 @@ namespace TheLegendOfHP
         public int Defence { get { return defence; } set { defence = value; } }
         public int MaxHealthPoints { get { return maxHealthPoints; } 
             set {
-                if (!Equals(value, maxHealthPoints))
-                {
-                    maxHealthPoints = value;
-                    OnCanviDinsDeLaPropietat();
+                maxHealthPoints = value;
                 }
-            } 
         }
         public int HealthPoints { get{ return healthPoints; }
             set
             {
-                if (!Equals(value, healthPoints))
-                {
                     healthPoints = value;
-                    OnCanviDinsDeLaPropietat();
-                }
             }
         }
         public int Velocity { get{ return velocity; } set { velocity = value; } }
         public bool IsAlive => healthPoints > 0;
-        public int Dmg => atack * (Level / 2);
+        public int Dmg => atack + (Level / 2);
         public int substracHealth(int dmg)
 
         {

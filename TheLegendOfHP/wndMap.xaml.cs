@@ -22,10 +22,13 @@ namespace TheLegendOfHP
         Grid myGrid = new Grid();
         Map map = new Map();
         Random random = new Random();
+        Player hero = new Player(5);
 
         // Emprar class player .pos
         int posXPlayer;
         int posYPlayer;
+
+        public Player Hero { get => hero; set => hero = value; }
 
         public wndMap()
         {
@@ -80,7 +83,7 @@ namespace TheLegendOfHP
 
         private void ThrowBattle()
         {
-            wndBattle wndBattle = new wndBattle();
+            wndBattle wndBattle = new wndBattle(this);
             wndBattle.ShowDialog();
         }
 

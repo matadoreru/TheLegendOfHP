@@ -23,11 +23,15 @@ namespace TheLegendOfHP
         Player hero;
         Enemy slime;
         Random r = new Random();
-        public wndBattle()
+        public wndBattle(wndMap wnMap)
         {
             InitializeComponent();
-            hero = new Player(5);
-            slime = new Enemy(r.Next(1, hero.Level-1));
+            hero = wnMap.Hero;
+            slime = new Enemy(r.Next(1, hero.Level - 1));
+            enemyHP.Value = slime.HealthPoints;
+            enemyHP.Maximum = slime.MaxHealthPoints;
+            playerHP.Value = hero.HealthPoints;
+            playerHP.Maximum = hero.MaxHealthPoints;
         }
 
         public Player Hero { get => hero; set => hero = value; }
@@ -35,21 +39,66 @@ namespace TheLegendOfHP
 
         private void btnAttack_Click(object sender, RoutedEventArgs e)
         {
-
-            if(slime.Velocity > hero.Velocity) {
-                //You scratch the enemy, you make a total of 50 damage
+            if (slime.Velocity > hero.Velocity) {
                 tbLog.Text = "The enemy has tackled, he made you a total of " + hero.substracHealth(slime.Dmg) + "damage";
-                if (!hero.IsAlive) PartidaPerduda();
-                tbLog.Text = "You scratch the enemy, you make a total of " + slime.substracHealth(hero.Dmg) + "damage";
-                if (!slime.IsAlive) PartidaGuanyada();
+                if (!hero.IsAlive)
+                {
+                    enemyHP.Value = slime.HealthPoints;
+                    enemyHP.Maximum = slime.MaxHealthPoints;
+                    playerHP.Value = hero.HealthPoints;
+                    playerHP.Maximum = hero.MaxHealthPoints;
+                    PartidaPerduda();
+                }
+                else
+                {
+                    tbLog.Text = "You scratch the enemy, you make a total of " + slime.substracHealth(hero.Dmg) + "damage";
+                    if (!slime.IsAlive)
+                    {
+                        enemyHP.Value = slime.HealthPoints;
+                        enemyHP.Maximum = slime.MaxHealthPoints;
+                        playerHP.Value = hero.HealthPoints;
+                        playerHP.Maximum = hero.MaxHealthPoints;
+                        PartidaGuanyada();
+                    }
+                    else
+                    {
+                        enemyHP.Value = slime.HealthPoints;
+                        enemyHP.Maximum = slime.MaxHealthPoints;
+                        playerHP.Value = hero.HealthPoints;
+                        playerHP.Maximum = hero.MaxHealthPoints;
+                    }
+                }
             }
             else
             {
                 tbLog.Text = "You scratch the enemy, you make a total of " + slime.substracHealth(hero.Dmg) + "damage";
-                if (!slime.IsAlive) PartidaGuanyada();
-                tbLog.Text = "The enemy has tackled, he made you a total of " + hero.substracHealth(slime.Dmg) + "damage";
-                if (!hero.IsAlive) PartidaPerduda();
-                
+                if (!slime.IsAlive) 
+                {
+                    enemyHP.Value = slime.HealthPoints;
+                    enemyHP.Maximum = slime.MaxHealthPoints;
+                    playerHP.Value = hero.HealthPoints;
+                    playerHP.Maximum = hero.MaxHealthPoints;
+                    PartidaGuanyada();
+                }
+                else
+                {
+                    tbLog.Text = "The enemy has tackled, he made you a total of " + hero.substracHealth(slime.Dmg) + "damage";
+                    if (!hero.IsAlive)
+                    {
+                        enemyHP.Value = slime.HealthPoints;
+                        enemyHP.Maximum = slime.MaxHealthPoints;
+                        playerHP.Value = hero.HealthPoints;
+                        playerHP.Maximum = hero.MaxHealthPoints;
+                        PartidaPerduda();
+                    }
+                    else
+                    {
+                        enemyHP.Value = slime.HealthPoints;
+                        enemyHP.Maximum = slime.MaxHealthPoints;
+                        playerHP.Value = hero.HealthPoints;
+                        playerHP.Maximum = hero.MaxHealthPoints;
+                    }
+                }          
             }
         }
 
@@ -59,14 +108,12 @@ namespace TheLegendOfHP
         {
             MessageBox.Show("You killed the enemy", "Announcement", MessageBoxButton.OK);
             this.Close();
-
         }
 
         public void PartidaPerduda()
         {
             MessageBox.Show("You have been killed by the enemy", "Announcement", MessageBoxButton.OK);
             this.Close();
-
         }
 
         private void btnRun_Click(object sender, RoutedEventArgs e)

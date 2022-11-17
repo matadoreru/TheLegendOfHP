@@ -12,9 +12,9 @@ namespace TheLegendOfHP
         {
             level = lvl;
             maxHealthPoints = 15 * level;
-            atack = 10 * level;
-            defence = 5 * level;
-            velocity = 5 * level;
+            atack = 4 * level;
+            defence = 1 * level;
+            velocity = 2 * level;
             healthPoints = MaxHealthPoints;
             isAlive = true;
         }
