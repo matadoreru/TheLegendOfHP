@@ -16,7 +16,6 @@ namespace TheLegendOfHP
             defence = 5 * level;
             velocity = 5 * level;
             healthPoints = MaxHealthPoints;
-            isAlive = true;
 
         }
 

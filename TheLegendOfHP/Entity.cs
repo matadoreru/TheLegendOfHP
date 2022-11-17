@@ -20,7 +20,6 @@ namespace TheLegendOfHP
             defence = 5* level;
             velocity = 5* level;
             healthPoints = MaxHealthPoints;
-            isAlive = true;
 
         }
 
@@ -31,13 +30,19 @@ namespace TheLegendOfHP
         public int MaxHealthPoints { get { return maxHealthPoints; } set { maxHealthPoints = value; } }
         public int HealthPoints { get{ return healthPoints; } set { healthPoints = value; } }
         public int Velocity { get{ return velocity; } set { velocity = value; } }
-        public bool IsAlive { get{ return isAlive; } set { isAlive = value; } }
+        public bool IsAlive => healthPoints > 0;
         public int Dmg => atack * (Level / 2);
 
-        public void substracHealth(int dmg)
+        public int substracHealth(int dmg)
         {
-            HealthPoints = healthPoints - (dmg - defence);
-            if (HealthPoints <= 0) IsAlive = false;
+            int damageDealt = 0;
+            if(defence < dmg)
+            {
+                damageDealt = dmg - defence;
+                HealthPoints = healthPoints - damageDealt;
+
+            }
+            return damageDealt;
         }
 
 
