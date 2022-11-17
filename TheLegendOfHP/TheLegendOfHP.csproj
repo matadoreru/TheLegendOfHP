@@ -9,15 +9,20 @@
 
   <ItemGroup>
     <None Remove="Source\backgroundBattle.jpg" />
+    <None Remove="Source\backgroundMenu.jpg" />
     <None Remove="Source\grass.png" />
     <None Remove="Source\grassHostile.png" />
     <None Remove="Source\mountain.png" />
     <None Remove="Source\player.png" />
     <None Remove="Source\slime.png" />
+    <None Remove="Source\title.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="Source\backgroundBattle.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Source\backgroundMenu.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Source\grass.png">
@@ -33,6 +38,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Source\slime.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Source\title.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

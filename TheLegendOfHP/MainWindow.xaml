@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="The Legend of HP" Height="450" Width="800">
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Source/backgroundMenu.jpg"/>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
@@ -17,10 +20,10 @@
         </Grid.RowDefinitions>
         
         <!-- Imatge principal -->
-        <TextBlock Text="The Legend of HP" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Button x:Name="btnPlay" Grid.Row="2" Content="Play" Margin="5"
+        <Image Source="/Source/title.png" Grid.RowSpan="3"/>
+        <Button x:Name="btnPlay" Grid.Row="4" Content="Play" Margin="5"
                 Click="btnPlay_Click" FontSize="25" Height="50"/>
-        <Button x:Name="btnExit" Grid.Row="4" Content="Exit" Margin="5" 
+        <Button x:Name="btnExit" Grid.Row="5" Content="Exit" Margin="5" 
                 Click="btnExit_Click" FontSize="25" Height="50"/>
     </Grid>
 </Window>
