@@ -23,6 +23,7 @@ namespace TheLegendOfHP
         Map map = new Map();
         Random random = new Random();
 
+        // Emprar class player .pos
         int posXPlayer;
         int posYPlayer;
 
@@ -47,46 +48,61 @@ namespace TheLegendOfHP
             {
                 myGrid.Children.Remove(myGrid.Children[myGrid.Children.Count - 1]);
                 posXPlayer++;
-                Image player = new Image();
-                Grid.SetRow(player, posXPlayer);
-                Grid.SetColumn(player, posYPlayer);
-                player.Source = new BitmapImage(new Uri("/Source/player.png", UriKind.Relative));
-                player.Stretch = Stretch.Fill;
-                myGrid.Children.Add(player);
+                PutPlayer();
+                if(OccurBattle())
+                    ThrowBattle();
             }
             else if (e.Key == Key.W && posXPlayer - 1 >= 0)
             {
                 myGrid.Children.Remove(myGrid.Children[myGrid.Children.Count - 1]);
                 posXPlayer--;
-                Image player = new Image();
-                Grid.SetRow(player, posXPlayer);
-                Grid.SetColumn(player, posYPlayer);
-                player.Source = new BitmapImage(new Uri("/Source/player.png", UriKind.Relative));
-                player.Stretch = Stretch.Fill;
-                myGrid.Children.Add(player);
+                PutPlayer();
+                if (OccurBattle())
+                    ThrowBattle();
             }
             else if (e.Key == Key.A && posYPlayer - 1 >= 0)
             {
                 myGrid.Children.Remove(myGrid.Children[myGrid.Children.Count - 1]);
                 posYPlayer--;
-                Image player = new Image();
-                Grid.SetRow(player, posXPlayer);
-                Grid.SetColumn(player, posYPlayer);
-                player.Source = new BitmapImage(new Uri("/Source/player.png", UriKind.Relative));
-                player.Stretch = Stretch.Fill;
-                myGrid.Children.Add(player);
+                PutPlayer();
+                if (OccurBattle())
+                    ThrowBattle();
             }
             else if (e.Key == Key.D && posYPlayer + 1 < myGrid.ColumnDefinitions.Count)
             {
                 myGrid.Children.Remove(myGrid.Children[myGrid.Children.Count - 1]);
                 posYPlayer++;
-                Image player = new Image();
-                Grid.SetRow(player, posXPlayer);
-                Grid.SetColumn(player, posYPlayer);
-                player.Source = new BitmapImage(new Uri("/Source/player.png", UriKind.Relative));
-                player.Stretch = Stretch.Fill;
-                myGrid.Children.Add(player);
+                PutPlayer();
+                if (OccurBattle())
+                    ThrowBattle();
             }
+        }
+
+        private void ThrowBattle()
+        {
+            wndBattle wndBattle = new wndBattle();
+            wndBattle.ShowDialog();
+        }
+
+        private bool OccurBattle()
+        {
+            bool battle = false;
+            if(map.MapTiles[posXPlayer,posYPlayer].Hostile)
+            {
+                if (random.Next(0, 6) == 5)
+                    battle = true;
+            }
+            return battle;
+        }
+
+        private void PutPlayer()
+        {
+            Image player = new Image();
+            Grid.SetRow(player, posXPlayer);
+            Grid.SetColumn(player, posYPlayer);
+            player.Source = new BitmapImage(new Uri("/Source/player.png", UriKind.Relative));
+            player.Stretch = Stretch.Fill;
+            myGrid.Children.Add(player);
         }
 
         private void MakeGrid()
@@ -126,16 +142,9 @@ namespace TheLegendOfHP
                     myGrid.Children.Add(tile);
                 }
             }
-            Image player = new Image();
             posXPlayer = random.Next(0, Map.DIMENSIONS_X);
             posYPlayer = random.Next(0, Map.DIMENSIONS_Y);
-
-            Grid.SetRow(player, posXPlayer);
-            Grid.SetColumn(player, posYPlayer);
-            player.Source = new BitmapImage(new Uri("/Source/player.png", UriKind.Relative));
-            player.Stretch = Stretch.Fill;
-            myGrid.Children.Add(player);
-
+            PutPlayer();
         }
     }
 }
