@@ -1,6 +1,6 @@
 # TheLegendOfHP
 
-Classic rpg.
+Classic rpg made with WPF and C#.
 
 You walk and can encounter enemys on the dark grass.
 
