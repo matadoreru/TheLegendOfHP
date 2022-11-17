@@ -110,8 +110,6 @@ namespace TheLegendOfHP
 
         private void MakeGrid()
         {
-            myGrid.ShowGridLines = true;
-
             // Color columns
             for (int i = 0; i < Map.DIMENSIONS_Y; i++)
             {
