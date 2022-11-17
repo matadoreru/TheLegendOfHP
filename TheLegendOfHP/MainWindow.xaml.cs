@@ -24,5 +24,16 @@ namespace TheLegendOfHP
         {
             InitializeComponent();
         }
+
+        private void btnPlay_Click(object sender, RoutedEventArgs e)
+        {
+            wndMap wndMap = new wndMap();
+            wndMap.ShowDialog();
+        }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
