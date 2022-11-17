@@ -69,7 +69,7 @@
         </Grid>
 
         <materialDesign:Card Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Margin="25,80,25,10" Padding="5" VerticalAlignment="Center">
-            <TextBlock x:Name="tbLog" Text="You scratch the enemy, you make a total of 50 damage"
+            <TextBlock x:Name="tbLog" Text=""
                     VerticalAlignment="Bottom" FontSize="15" HorizontalAlignment="Center"
                    FontWeight="Bold"/>
         </materialDesign:Card>
