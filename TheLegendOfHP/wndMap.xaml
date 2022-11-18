@@ -29,7 +29,7 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding ElementName=playerHP, Path=Value, StringFormat='Salud: {0} /'}" FontSize="15" FontWeight="Bold"
+                <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding ElementName=playerHP, Path=Value, StringFormat='Health: {0} /'}" FontSize="15" FontWeight="Bold"
                        VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
                 <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding ElementName=playerHP, Path=Maximum, StringFormat=' {0}'}" FontSize="15" FontWeight="Bold"
                        VerticalAlignment="Bottom"/>
