@@ -47,37 +47,93 @@ namespace TheLegendOfHP
         private void WndMap_KeyDown(object sender, KeyEventArgs e)
         {
 
-            if (e.Key == Key.S && posXPlayer + 1 < myGrid.RowDefinitions.Count && map.MapTiles[posXPlayer + 1,posYPlayer].TileType != TilesTypes.Mountains)
+            if (e.Key == Key.S && posXPlayer + 1 < myGrid.RowDefinitions.Count)
             {
-                myGrid.Children.Remove(myGrid.Children[myGrid.Children.Count - 1]);
-                posXPlayer++;
-                PutPlayer();
-                if(OccurBattle())
-                    ThrowBattle();
+                if (map.MapTiles[posXPlayer + 1, posYPlayer].TileType == TilesTypes.Mountains)
+                {
+                    hero.HealthPoints--;
+                    playerHP.Value = hero.HealthPoints;
+                    playerHP.Maximum = hero.MaxHealthPoints;
+                }
+                if (hero.HealthPoints <= 0)
+                {
+                    MessageBox.Show("You have been defeated. The land will wait for another hero to rise");
+                    this.Close();
+                }
+                else
+                {
+                    myGrid.Children.Remove(myGrid.Children[myGrid.Children.Count - 1]);
+                    posXPlayer++;
+                    PutPlayer();
+                    if (OccurBattle())
+                        ThrowBattle();
+                }
             }
-            else if (e.Key == Key.W && posXPlayer - 1 >= 0 && map.MapTiles[posXPlayer - 1, posYPlayer].TileType != TilesTypes.Mountains)
+            else if (e.Key == Key.W && posXPlayer - 1 >= 0)
             {
-                myGrid.Children.Remove(myGrid.Children[myGrid.Children.Count - 1]);
-                posXPlayer--;
-                PutPlayer();
-                if (OccurBattle())
-                    ThrowBattle();
+                if (map.MapTiles[posXPlayer - 1, posYPlayer].TileType == TilesTypes.Mountains)
+                {
+                    hero.HealthPoints--;
+                    playerHP.Value = hero.HealthPoints;
+                    playerHP.Maximum = hero.MaxHealthPoints;
+                }
+                if (hero.HealthPoints <= 0)
+                {
+                    MessageBox.Show("You have been defeated. The land will wait for another hero to rise");
+                    this.Close();
+                }
+                else
+                {
+                    myGrid.Children.Remove(myGrid.Children[myGrid.Children.Count - 1]);
+                    posXPlayer--;
+                    PutPlayer();
+                    if (OccurBattle())
+                        ThrowBattle();
+                }
             }
-            else if (e.Key == Key.A && posYPlayer - 1 >= 0 && map.MapTiles[posXPlayer, posYPlayer - 1].TileType != TilesTypes.Mountains)
+            else if (e.Key == Key.A && posYPlayer - 1 >= 0)
             {
-                myGrid.Children.Remove(myGrid.Children[myGrid.Children.Count - 1]);
-                posYPlayer--;
-                PutPlayer();
-                if (OccurBattle())
-                    ThrowBattle();
+                if (map.MapTiles[posXPlayer, posYPlayer - 1].TileType == TilesTypes.Mountains)
+                {
+                    hero.HealthPoints--;
+                    playerHP.Value = hero.HealthPoints;
+                    playerHP.Maximum = hero.MaxHealthPoints;
+                }
+                if (hero.HealthPoints <= 0)
+                {
+                    MessageBox.Show("You have been defeated. The land will wait for another hero to rise");
+                    this.Close();
+                }
+                else
+                {
+                    myGrid.Children.Remove(myGrid.Children[myGrid.Children.Count - 1]);
+                    posYPlayer--;
+                    PutPlayer();
+                    if (OccurBattle())
+                        ThrowBattle();
+                }
             }
-            else if (e.Key == Key.D && posYPlayer + 1 < myGrid.ColumnDefinitions.Count && map.MapTiles[posXPlayer, posYPlayer + 1].TileType != TilesTypes.Mountains)
+            else if (e.Key == Key.D && posYPlayer + 1 < myGrid.ColumnDefinitions.Count)
             {
-                myGrid.Children.Remove(myGrid.Children[myGrid.Children.Count - 1]);
-                posYPlayer++;
-                PutPlayer();
-                if (OccurBattle())
-                    ThrowBattle();
+                if (map.MapTiles[posXPlayer, posYPlayer + 1].TileType == TilesTypes.Mountains)
+                {
+                    hero.HealthPoints--;
+                    playerHP.Value = hero.HealthPoints;
+                    playerHP.Maximum = hero.MaxHealthPoints;
+                }
+                if (hero.HealthPoints <= 0)
+                {
+                    MessageBox.Show("You have been defeated. The land will wait for another hero to rise");
+                    this.Close();
+                }
+                else
+                {
+                    myGrid.Children.Remove(myGrid.Children[myGrid.Children.Count - 1]);
+                    posYPlayer++;
+                    PutPlayer();
+                    if (OccurBattle())
+                        ThrowBattle();
+                }
             }
         }
 
@@ -123,7 +179,12 @@ namespace TheLegendOfHP
                 RowDefinition rowTemp = new RowDefinition();
                 myGrid.RowDefinitions.Add(rowTemp);
             }
-            this.Content = myGrid;
+
+            Grid.SetRow(myGrid, 0);
+            Grid.SetColumn(myGrid, 0);
+            gridMap.Children.Add(myGrid);
+            playerHP.Value = hero.HealthPoints;
+            playerHP.Maximum = hero.MaxHealthPoints;
         }
 
         private void PutTiles()
