@@ -43,7 +43,7 @@
                 <RowDefinition Height="3*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding ElementName=enemyHP, Path=Value, StringFormat='Salud: {0} /'}" FontSize="25" FontWeight="Bold"
+            <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding ElementName=enemyHP, Path=Value, StringFormat='HP: {0} /'}" FontSize="25" FontWeight="Bold"
                        VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
             <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding ElementName=enemyHP, Path=Maximum, StringFormat=' {0}'}" FontSize="25" FontWeight="Bold"
                        VerticalAlignment="Bottom"/>
@@ -60,19 +60,34 @@
                 <RowDefinition Height="3*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding ElementName=playerHP, Path=Value, StringFormat='Salud: {0} /'}" FontSize="25" FontWeight="Bold"
+            <StackPanel Margin="10,0,0,0" Grid.Row="1" Orientation="Horizontal" Grid.ColumnSpan="2">
+                <TextBlock Text="{Binding ElementName=playerHP, Path=Value, StringFormat='HP: {0} /'}" FontSize="25" FontWeight="Bold"
                        VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
-            <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding ElementName=playerHP, Path=Maximum, StringFormat=' {0}'}" FontSize="25" FontWeight="Bold"
+                <TextBlock Text="{Binding ElementName=playerHP, Path=Maximum, StringFormat=' {0}'}" FontSize="25" FontWeight="Bold"
                        VerticalAlignment="Bottom"/>
+            </StackPanel>
+
             <ProgressBar x:Name="playerHP" Grid.ColumnSpan="2" Grid.Row="2" Maximum="100" Value="100"
-                     Height="30" Margin="10,0,0,20" VerticalAlignment="Bottom"/>
+                     Height="10" Margin="10,0,0,20" VerticalAlignment="Bottom"/>
         </Grid>
 
-        <materialDesign:Card Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Margin="25,80,25,10" Padding="5" VerticalAlignment="Center">
-            <TextBlock x:Name="tbLog" Text=""
+        <StackPanel Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" 
+            VerticalAlignment="Bottom" Orientation="Vertical" Margin="15">
+            <materialDesign:Card Padding="5" VerticalAlignment="Center">
+                <TextBlock x:Name="tbLog" Text=""
                     VerticalAlignment="Bottom" FontSize="15" HorizontalAlignment="Center"
                    FontWeight="Bold"/>
-        </materialDesign:Card>
+            </materialDesign:Card>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding ElementName=playerXP, Path=Value, StringFormat='XP: {0} /'}" FontSize="12" FontWeight="Bold"
+                       VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="5,0,0,0"/>
+                <TextBlock Text="{Binding ElementName=playerXP, Path=Maximum, StringFormat=' {0}'}" FontSize="12" FontWeight="Bold"
+                       VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+            </StackPanel>
+            <ProgressBar x:Name="playerXP"  Grid.Row="3" Grid.ColumnSpan="2" Maximum="100" Value="0"
+                     Height="10" Margin="5,0,0,5" VerticalAlignment="Top"/>
+        </StackPanel>
+        
         <Image Grid.Column="2" Grid.Row="1" Source="/Source/slime.png" />
         <Image Grid.Column="0" Grid.Row="3" Source="/Source/player.png" />
         <Button x:Name="btnAttack" Grid.Column="1" Grid.Row="3" Content="Attack" Margin="25"
