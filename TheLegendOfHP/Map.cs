@@ -22,11 +22,13 @@ namespace TheLegendOfHP
             {
                 for(int j = 0; j < DIMENSIONS_Y; j++)
                 {
-                    resultat = random.Next(0, 12);
-                    if(resultat >= 7 && resultat <= 10)
+                    resultat = random.Next(0, 101);
+                    if(resultat >= 51 && resultat <= 85)
                         tileType = TilesTypes.DarkGrass;
-                    else if(resultat == 11)
+                    else if(resultat >= 86 && resultat <= 98)
                         tileType = TilesTypes.Mountains;
+                    else if(resultat == 100)
+                        tileType = TilesTypes.Chest;
                     Square tempSquare = new Square(tileType);
                     MapTiles[i, j] = tempSquare;
                     tileType = TilesTypes.Grass;

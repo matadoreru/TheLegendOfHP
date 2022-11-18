@@ -17,6 +17,8 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
+            
+            <!-- Player HP -->
             <Grid Grid.Column="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -33,6 +35,17 @@
                        VerticalAlignment="Bottom"/>
                 <ProgressBar x:Name="playerHP"  Grid.Row="2" Grid.ColumnSpan="2" Maximum="100" Value="100"
                      Height="30" Margin="5,0,0,5" VerticalAlignment="Top"/>
+            </Grid>
+            
+            <!-- Potions -->
+            <Grid Grid.Column="1" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock x:Name="tbNumberPotion" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0" Text="Number of potions: 0"/>
+                <Button x:Name="btnPotion" Grid.Column="1" Content="Use a potion" Click="btnPotion_Click"/>
             </Grid>
         </Grid>
     </Grid>

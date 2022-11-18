@@ -10,6 +10,7 @@
   <ItemGroup>
     <None Remove="Source\backgroundBattle.jpg" />
     <None Remove="Source\backgroundMenu.jpg" />
+    <None Remove="Source\chest.png" />
     <None Remove="Source\grass.png" />
     <None Remove="Source\grassHostile.png" />
     <None Remove="Source\mountain.png" />
@@ -23,6 +24,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Source\backgroundMenu.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Source\chest.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Source\grass.png">

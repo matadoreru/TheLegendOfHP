@@ -9,6 +9,8 @@ namespace TheLegendOfHP
     public class Player : Entity
     {
         int nEnemysDefeat = 0;
+        int numberOfPotions = 0;
+
         public Player(int lvl) : base(lvl)
         {
             level = lvl;
@@ -19,7 +21,8 @@ namespace TheLegendOfHP
             healthPoints = MaxHealthPoints;
             isAlive = true;
 
-        }
+        } 
+        public int NumberOfPotions { get => numberOfPotions; set => numberOfPotions = value; }
         public int NEnemysDefeat { get => nEnemysDefeat; set => nEnemysDefeat = value; }
     }
 }
