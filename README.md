@@ -5,7 +5,7 @@ Classic rpg made with WPF and C#.
 
 You walk and can encounter enemys on the dark grass.
 
-![image](https://user-images.githubusercontent.com/114359832/202569473-18ca4e43-61e4-44cf-97e4-7d67dc9f1a31.png)
+![image](https://user-images.githubusercontent.com/114359832/202744117-777e56f6-8272-4d97-937b-83a01c92a508.png)
 
 Turn base combat
 
