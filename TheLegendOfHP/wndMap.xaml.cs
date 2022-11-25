@@ -112,9 +112,17 @@ namespace TheLegendOfHP
             }
             else if (map.MapTiles[posXPlayer, posYPlayer].TileType == TilesTypes.Chest)
             {
-                MessageBox.Show("You found a Potion of HP!");
-                hero.NumberOfPotions++;
-                tbNumberPotion.Text = "Number of potions: " + hero.NumberOfPotions;
+                if(!map.MapTiles[posXPlayer, posYPlayer].Collected)
+                {
+                    map.MapTiles[posXPlayer, posYPlayer].Collected = true;
+                    MessageBox.Show("You found a Potion of HP!");
+                    hero.NumberOfPotions++;
+                    tbNumberPotion.Text = "Number of potions: " + hero.NumberOfPotions;
+                }
+                else
+                {
+                    MessageBox.Show("The chest is empty...\nYou had already found the treasure content!");
+                }
             }
         }
 

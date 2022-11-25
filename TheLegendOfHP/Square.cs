@@ -10,6 +10,7 @@ namespace TheLegendOfHP
     public class Square
     {
         private TilesTypes tileType;
+        private bool collected;
 
         public Square(TilesTypes tileType)
         {
@@ -17,5 +18,6 @@ namespace TheLegendOfHP
         }
 
         public TilesTypes TileType { get => tileType; set => tileType = value; }
+        public bool Collected { get => collected; set => collected = value; }
     }
 }
