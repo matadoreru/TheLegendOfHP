@@ -17,5 +17,8 @@ namespace TheLegendOfHP
             velocity = 1 * level;
             healthPoints = MaxHealthPoints;
         }
+
+        public int GivenExperience => 45 + 10 * Level;
+
     }
 }

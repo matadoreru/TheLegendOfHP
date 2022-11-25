@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,7 +11,7 @@ namespace TheLegendOfHP
     
     public abstract class Entity
     {
-        protected int maxHealthPoints, atack, defence, velocity, level, healthPoints, probAtack;
+        protected int maxHealthPoints, atack, defence, velocity, level, healthPoints, probAtack, experience;
         protected bool isAlive;
         private Random r = new Random();
 
@@ -23,6 +24,7 @@ namespace TheLegendOfHP
             defence = 1* level;
             velocity = 1* level;
             healthPoints = MaxHealthPoints;
+            experience = 0;
             isAlive = true;
         }
 
@@ -56,6 +58,11 @@ namespace TheLegendOfHP
         
         
         }
+
+        public int MaxExperience => 100 + 10 * level;
+        public int Experience { get { return experience; } set { experience = value; } }
+
+
         public int substracHealth(int dmg)
 
         {
@@ -69,15 +76,18 @@ namespace TheLegendOfHP
             return damageDealt;
         }
 
-
         
+        public void addXP(int xp)
+        {
+            Experience = Experience + xp;
+            while (Experience > MaxExperience) LevelUp();
+        }
 
+        private void LevelUp()
+        {
+            Experience = Experience - MaxExperience;
+            Level++;
 
-
-
-
-
-
-
+        }
     }
 }

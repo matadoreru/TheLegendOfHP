@@ -32,6 +32,9 @@ namespace TheLegendOfHP
             enemyHP.Maximum = slime.MaxHealthPoints;
             playerHP.Value = hero.HealthPoints;
             playerHP.Maximum = hero.MaxHealthPoints;
+            playerXP.Value = hero.Experience;
+            playerXP.Maximum = hero.MaxExperience;
+            lbNumberOfPotions.Content = "Number of potions: " + hero.NumberOfPotions;
         }
 
         public Player Hero { get => hero; set => hero = value; }
@@ -116,13 +119,18 @@ namespace TheLegendOfHP
 
         public void PartidaGuanyada()
         {
+            hero.addXP(slime.GivenExperience);
+            playerXP.Value = hero.Experience;
+            playerXP.Maximum = hero.MaxExperience;
             MessageBox.Show("You killed the enemy", "Announcement", MessageBoxButton.OK);
+
             this.Close();
         }
 
         public void PartidaPerduda()
         {
             MessageBox.Show("You have been killed by the enemy", "Announcement", MessageBoxButton.OK);
+
             this.Close();
         }
 
@@ -135,5 +143,25 @@ namespace TheLegendOfHP
             else
                 this.Close();
         }
+
+        private void btnPotion_Click(object sender, RoutedEventArgs e)
+        {
+            if (hero.NumberOfPotions > 0 && hero.HealthPoints != hero.MaxHealthPoints)
+            {
+                hero.NumberOfPotions--;
+                hero.HealthPoints = hero.MaxHealthPoints;
+                lbNumberOfPotions.Content = "Number of potions: " + hero.NumberOfPotions;
+                playerHP.Value = hero.HealthPoints;
+                playerHP.Maximum = hero.MaxHealthPoints;
+            }
+            else if (hero.HealthPoints == hero.MaxHealthPoints)
+                MessageBox.Show("You have already all of you HP!");
+        }
+
+        private void btnInfo_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
+
