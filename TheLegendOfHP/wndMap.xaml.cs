@@ -102,8 +102,11 @@ namespace TheLegendOfHP
             else if (map.MapTiles[posXPlayer, posYPlayer].TileType == TilesTypes.DarkGrass && OccurBattle())
             {
                 ThrowBattle();
+                playerXP.Value = hero.ExpTotal;
+                playerXP.Maximum = hero.MaxExp;
                 playerHP.Value = hero.HealthPoints;
                 playerHP.Maximum = hero.MaxHealthPoints;
+                tbNumberPotion.Text = "Number of potions: " + hero.NumberOfPotions.ToString();
                 if (hero.HealthPoints <= 0)
                 {
                     MessageBox.Show("You have been defeated. The land will wait for another hero to rise");
@@ -112,9 +115,17 @@ namespace TheLegendOfHP
             }
             else if (map.MapTiles[posXPlayer, posYPlayer].TileType == TilesTypes.Chest)
             {
-                MessageBox.Show("You found a Potion of HP!");
-                hero.NumberOfPotions++;
-                tbNumberPotion.Text = "Number of potions: " + hero.NumberOfPotions;
+                if(!map.MapTiles[posXPlayer, posYPlayer].Collected)
+                {
+                    map.MapTiles[posXPlayer, posYPlayer].Collected = true;
+                    MessageBox.Show("You found a Potion of HP!");
+                    hero.NumberOfPotions++;
+                    tbNumberPotion.Text = "Number of potions: " + hero.NumberOfPotions;
+                }
+                else
+                {
+                    MessageBox.Show("The chest is empty...\nYou had already found the treasure content!");
+                }
             }
         }
 
