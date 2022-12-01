@@ -19,6 +19,7 @@ namespace TheLegendOfHP
     /// </summary>
     public partial class wndBattle : Window 
     {
+        wndMap windowsMap = null;
         Random random = new Random();
         Player hero;
         Enemy slime;
@@ -26,8 +27,9 @@ namespace TheLegendOfHP
         public wndBattle(wndMap wnMap)
         {
             InitializeComponent();
+            windowsMap = wnMap;
             hero = wnMap.Hero;
-            slime = new Enemy(r.Next(1, hero.Level - 1));
+            slime = new Enemy(r.Next(hero.Level - 3, hero.Level + 1));
             enemyHP.Value = slime.HealthPoints;
             enemyHP.Maximum = slime.MaxHealthPoints;
             playerHP.Value = hero.HealthPoints;
@@ -35,6 +37,7 @@ namespace TheLegendOfHP
             playerXP.Value = hero.Experience;
             playerXP.Maximum = hero.MaxExperience;
             lbNumberOfPotions.Content = "Number of potions: " + hero.NumberOfPotions;
+
         }
 
         public Player Hero { get => hero; set => hero = value; }
@@ -67,6 +70,24 @@ namespace TheLegendOfHP
                             MessageBox.Show("You have defeated the Demon King's minions.\n" +
                                 "You Win!\n" +
                                 "You can keep playing as long as you want!");
+                        int exp = random.Next(50, 75);
+                        if (random.Next(1, 10) == 1)
+                        {
+                            MessageBox.Show("You find a potion in the body of the slime!");
+                            hero.NumberOfPotions += 1;
+                        }
+                        hero.ExpTotal += exp;
+                        if (hero.ExpTotal >= hero.MaxExp)
+                        {
+                            hero.Level += hero.ExpTotal / hero.MaxExp;
+                            hero.ExpTotal -= (hero.MaxExp * (hero.ExpTotal / hero.MaxExp));
+                            windowsMap.Hero = new Player(hero.Level);
+                            windowsMap.Hero.NEnemysDefeat = hero.NEnemysDefeat;
+                            windowsMap.Hero.NumberOfPotions = hero.NumberOfPotions;
+                            windowsMap.Hero.ExpTotal = hero.ExpTotal;
+                        }
+                        playerXP.Value = hero.ExpTotal;
+                        playerXP.Maximum = hero.MaxExp; ;
                     }
                     else
                     {
@@ -92,6 +113,24 @@ namespace TheLegendOfHP
                         MessageBox.Show("You have defeated the Demon King's minions.\n" +
                             "You Win!\n" +
                             "You can keep playing as long as you want!");
+                    int exp = random.Next(50,75);
+                    if(random.Next(1,10) == 1)
+                    {
+                        MessageBox.Show("You find a potion in the body of the slime!");
+                        hero.NumberOfPotions += 1;
+                    }
+                    hero.ExpTotal += exp;
+                    if (hero.ExpTotal >= hero.MaxExp)
+                    {
+                        hero.Level += hero.ExpTotal / hero.MaxExp;
+                        hero.ExpTotal -= (hero.MaxExp * (hero.ExpTotal / hero.MaxExp));
+                        windowsMap.Hero = new Player(hero.Level);
+                        windowsMap.Hero.NEnemysDefeat = hero.NEnemysDefeat;
+                        windowsMap.Hero.NumberOfPotions = hero.NumberOfPotions;
+                        windowsMap.Hero.ExpTotal = hero.ExpTotal;
+                    }
+                    playerXP.Value = hero.ExpTotal;
+                    playerXP.Maximum = hero.MaxExp;
                 }
                 else
                 {
@@ -111,7 +150,7 @@ namespace TheLegendOfHP
                         playerHP.Value = hero.HealthPoints;
                         playerHP.Maximum = hero.MaxHealthPoints;
                     }
-                }          
+                }
             }
         }
 

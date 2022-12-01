@@ -10,20 +10,22 @@
         <Grid.Background>
             <ImageBrush ImageSource="/Source/backgroundMenu.jpg"/>
         </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         
         <!-- Imatge principal -->
-        <Image Source="/Source/title.png" Grid.RowSpan="3"/>
-        <Button x:Name="btnPlay" Grid.Row="4" Content="Play" Margin="5"
+        <Image Source="/Source/title.png" Grid.ColumnSpan="3"/>
+        <Button Grid.Column="1" x:Name="btnPlay" Grid.Row="1" Content="Play" Margin="5"
                 Click="btnPlay_Click" FontSize="25" Height="50"/>
-        <Button x:Name="btnExit" Grid.Row="5" Content="Exit" Margin="5" 
+        <Button Grid.Column="1" x:Name="btnExit" Grid.Row="2" Content="Exit" Margin="5" 
                 Click="btnExit_Click" FontSize="25" Height="50"/>
     </Grid>
 </Window>
